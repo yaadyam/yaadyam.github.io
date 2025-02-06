@@ -11,6 +11,7 @@ async function getData() {
     const json = await response.json()
     gd = json
     document.getElementById("gameversion").innerText = "for WTD " + gd.game_version
+    document.getElementById("randomize").removeAttribute("disabled") // prevent user from somehow hitting randomize before json object is loaded
 }
 
 getData()

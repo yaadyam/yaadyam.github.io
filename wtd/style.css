@@ -4,13 +4,17 @@
 }
 
 html {
-    background-image: linear-gradient(lightgrey, slategrey);
+    background-image: linear-gradient(lightgrey, rgb(151, 139, 210));
     min-height: 100%;
 }
 
 body {
     text-align: center;
     font-family: "Lexend Deca"
+}
+
+button {
+    font-size: 125%;
 }
 
 hr {
