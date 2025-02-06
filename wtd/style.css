@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Lexend Deca';
-    src: url('Lexend_Deca/static/LexendDeca-Regular.ttf'); 
+    src: url('../Lexend_Deca/static/LexendDeca-Regular.ttf'); 
 }
 
 html {
@@ -19,9 +19,24 @@ hr {
 }
 
 div {
-    width: 30%;
+    width: fit-content;
     margin: auto;
-    border-style: outset;
+    border-style: groove;
     border-color: lightgray;
     padding: 5px;
+    border-radius: 2px;
+    margin-bottom: 5px;
+}
+
+label {
+    display: block;
+}
+
+.unitnum {
+    font-weight: bold;
+}
+
+.unitslot {
+    border-style: none;
+    display: inline-block;
 }
