@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'Lexend Deca';
+    src: url('Lexend_Deca/static/LexendDeca-Regular.ttf'); 
+
+}
+
+html {
+    background-image: linear-gradient(lightgrey, slategrey);
+    min-height: 100%;
+}
+
+body {
+    text-align: center;
+    font-family: "Lexend Deca"
+}
+
+hr {
+    color: black;
+    border-style: solid;
+}
+
+div {
+    width: 30%;
+    margin: auto;
+    border-style: outset;
+    border-color: lightgray;
+    padding: 5px;
+}
