@@ -36,6 +36,10 @@
             </div>
         </div>
         <button type="button" class="collapsible">Exclude individual units...</button>
+        <div class="controls">
+            <label class="includecb" for="includesummon">Include Summoners</label> 
+            <input type="checkbox" id="includesummon" value="summon" checked>
+        </div>
         <div class="content">
             <input type="text" id="excludeunitinput" list="unitdatalist" placeholder="enter unit name" />
             <datalist id="unitdatalist">
@@ -48,10 +52,6 @@
                     
                 </ul>
             </nav>
-        </div>
-        <div class="controls">
-            <label class="includecb" for="includesummon">Include Summoners</label> 
-            <input type="checkbox" id="includesummon" value="summon" checked>
         </div>
     </div>
     <button id="randomize" onclick=randomize() disabled >Randomize</button>
