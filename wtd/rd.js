@@ -72,27 +72,32 @@ function randomize() {
             unitpool.push(unit)
         }
     })
-    if (unitpool.length > 0 && !isSummoner) {
-        let chosenindices = []
-        for (let i = 0; i < 5; i++) {
-            let choice
-            do {
-                choice = Math.floor(Math.random() * unitpool.length)
-            } while (chosenindices.includes(choice))
-            chosenindices.push(choice)
-        }
-        for (let i = 0; i < 5; i++) {
-            let chosenunit = unitpool[chosenindices[i]]
-            let pageslot = document.getElementById("unit" + (i+1))
-            pageslot.querySelector("img").style.display = "inline"
-            pageslot.querySelector("img").src = "./images/units/" + chosenunit[0] + ".png"
-            pageslot.lastElementChild.innerText = toTitleCase(chosenunit[0])
-        }
+    if (unitpool.length > 5 && !isSummoner) {
+            let chosenindices = []
+            for (let i = 0; i < 5; i++) {
+                let choice
+                do {
+                    choice = Math.floor(Math.random() * unitpool.length)
+                } while (chosenindices.includes(choice))
+                chosenindices.push(choice)
+            }
+            for (let i = 0; i < 5; i++) {
+                let chosenunit = unitpool[chosenindices[i]]
+                let pageslot = document.getElementById("unit" + (i+1))
+                pageslot.querySelector("img").style.display = "inline"
+                pageslot.querySelector("img").src = "./images/units/" + chosenunit[0] + ".png"
+                pageslot.lastElementChild.innerText = toTitleCase(chosenunit[0])
+            }
+        
     } else {
-        for (let i = 1; i <= 5; i++) {
-            let pageslot = document.getElementById("unit" + i)
-            pageslot.querySelector("img").style.display = "none"
-            pageslot.lastElementChild.innerText = "[none]"
+        if (!isSummoner) {
+            window.alert("You have less than 5 units included, change your filters!")
+        } else {
+            for (let i = 1; i <= 5; i++) {
+                let pageslot = document.getElementById("unit" + i)
+                pageslot.querySelector("img").style.display = "none"
+                pageslot.lastElementChild.innerText = "[none]"
+            }
         }
     }
 }
