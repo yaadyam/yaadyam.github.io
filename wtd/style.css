@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'Lexend Deca';
-    src: url('../Lexend_Deca/static/LexendDeca-Regular.ttf'); 
+    font-family: "Lexend Deca";
+    src: url("../Lexend_Deca/static/LexendDeca-Regular.ttf");
 }
 
 html {
@@ -8,13 +8,23 @@ html {
     min-height: 100%;
 }
 
+input {
+    display: inline;
+}
+
 body {
     text-align: center;
-    font-family: "Lexend Deca"
+    font-family: "Lexend Deca";
+}
+
+img {
+    display: block;
 }
 
 button {
     font-size: 125%;
+    display: block;
+    margin: auto;
 }
 
 hr {
@@ -22,22 +32,61 @@ hr {
     border-style: solid;
 }
 
+p {
+    margin: 2px;
+    font-weight: bold;
+}
+
 div {
     width: fit-content;
     margin: auto;
+}
+
+#cbs {
+    display: flex;
+    flex-direction: row;
+    border-style: double;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.chosen {
     border-style: groove;
     border-color: lightgray;
     padding: 5px;
     border-radius: 2px;
+    margin: auto;
     margin-bottom: 5px;
+    text-align: center;
 }
 
-label {
+input[type="checkbox"] {
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+}
+
+.chosen * > label {
     display: block;
+}
+
+.cbc {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    width: 70px;
+    flex-direction: column;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.283);
 }
 
 .unitnum {
     font-weight: bold;
+}
+
+img {
+    display: block;
+    margin: auto;
+    padding: 10px;
 }
 
 .unitslot {

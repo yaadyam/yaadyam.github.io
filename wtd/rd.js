@@ -4,6 +4,15 @@
 */
 
 let gd // JSON object containing game data
+let filter = {
+    "summoners": true,
+    "credz": true,
+    "trophy": true,
+    "token": true,
+    "special": true,
+    "pvp": true,
+    "alt": true
+}
 
 async function getData() {
     const url = "./data.json"
@@ -19,36 +28,49 @@ async function getData() {
 getData()
 
 function randomize() {
+    updatefilters()
     const accessories = gd["accessories"]
-    let chosenacc =
-        Object.entries(accessories)[
-        Math.floor(Math.random() * Object.keys(accessories).length)
-        ]
+    let accpool = []
+    Object.entries(accessories).forEach(acc => {
+        let issummon = acc[1]["summoner"]
+        if (!(issummon && !filter["summoners"])) {
+            accpool.push(acc);
+        }
+    })
+    let chosenacc = accpool[Math.floor(Math.random() * accpool.length)]
     const isSummoner = chosenacc[1]["summoner"]
     let accpageslot = document.getElementById("chosenaccessory")
     accpageslot.lastElementChild.innerText = toTitleCase(chosenacc[0])
-    accpageslot.querySelector("img").src = "./images/placeholder.jpg"
 
     const units = gd["units"]
-    let chosenindices = [-1, -1, -1, -1, -1]
-    for (let i = 0; i < 5 && !isSummoner; i++) {
-        let choice
-        do {
-            choice = Math.floor(Math.random() * Object.keys(units).length)
-        } while (chosenindices.includes(choice))
-        chosenindices[i] = choice
-    }
-    for (let i = 1; i <= 5; i++) {
-        if (isSummoner) {
+    let unitpool = []
+    Object.entries(units).forEach(unit => {
+        let cat = unit[1]["category"];
+        if (filter[cat] == true) {
+            unitpool.push(unit)
+        }
+    })
+    if (unitpool.length > 0 && !isSummoner) {
+        let chosenindices = []
+        for (let i = 0; i < 5; i++) {
+            let choice
+            do {
+                choice = Math.floor(Math.random() * unitpool.length)
+            } while (chosenindices.includes(choice))
+            chosenindices.push(choice)
+        }
+        for (let i = 0; i < 5; i++) {
+            let chosenunit = unitpool[chosenindices[i]]
+            let pageslot = document.getElementById("unit" + (i+1))
+            pageslot.querySelector("img").style.display = "inline"
+            pageslot.querySelector("img").src = "./images/units/" + chosenunit[0] + ".png"
+            pageslot.lastElementChild.innerText = toTitleCase(chosenunit[0])
+        }
+    } else {
+        for (let i = 1; i <= 5; i++) {
             let pageslot = document.getElementById("unit" + i)
-            pageslot.querySelector("img").src = "./images/placeholder.jpg"
+            pageslot.querySelector("img").style.display = "none"
             pageslot.lastElementChild.innerText = "[none]"
-        } else {
-            let chosenunit = Object.keys(units)[chosenindices[i - 1]]
-            let pageslot = document.getElementById("unit" + i)
-            pageslot.querySelector("img").removeAttribute("hidden")
-            pageslot.querySelector("img").src = "./images/units/" + chosenunit + ".png"
-            pageslot.lastElementChild.innerText = toTitleCase(chosenunit)
         }
     }
 }
@@ -60,4 +82,14 @@ function toTitleCase(str) {
         str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1)
     }
     return str.join(" ")
+}
+
+function updatefilters() {
+    filter["credz"] = document.getElementById("includecredz").checked
+    filter["trophy"] = document.getElementById("includetrophy").checked
+    filter["token"] = document.getElementById("includetoken").checked
+    filter["special"] = document.getElementById("includespecial").checked
+    filter["pvp"] = document.getElementById("includepvp").checked
+    filter["alt"] = document.getElementById("includealt").checked
+    filter["summoners"] = document.getElementById("includesummon").checked
 }

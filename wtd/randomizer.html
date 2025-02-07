@@ -7,10 +7,41 @@
     <h1>Loadout Randomizer</h1>
     <label id="gameversion"></label>
     <hr>
-    <div>
-        <button id="randomize" onclick=randomize() disabled >Randomize</button>
+    <div class="window">
+        <p>Unit categories:</p>
+        <div id="cbs">
+            <div class="cbc">
+                <label class="includecb" for="includecredz">Credz</label>
+                <input type="checkbox" id="includecredz" value="credz" checked>
+            </div>
+            <div class="cbc">
+                <label class="includecb" for="includetrophy">Trophy</label>
+                <input type="checkbox" id="includetrophy" value="trophy" checked>
+            </div>
+            <div class="cbc">
+                <label class="includecb" for="includetoken">Token</label> 
+                <input type="checkbox" id="includetoken" value="token" checked>
+            </div>
+            <div class="cbc">
+                <label class="includecb" for="includespecial">Special</label> 
+                <input type="checkbox" id="includespecial" value="special" checked>
+            </div>
+            <div class="cbc">
+                <label class="includecb" for="includepvp">PVP</label> 
+                <input type="checkbox" id="includepvp" value="pvp" checked>
+            </div>
+            <div class="cbc">
+                <label class="includecb" for="includealt">Alt.</label> 
+                <input type="checkbox" id="includealt" value="alt" checked>
+            </div>
+        </div>
+        <div style="border-style:solid; padding: 3px; border-color:rgba(0, 0, 0, 0.287); margin-top: 5px; margin-bottom: 5px;">
+            <label class="includecb" for="includesummon">Include Summoners</label> 
+            <input type="checkbox" id="includesummon" value="summon" checked>
+        </div>
     </div>
-    <div id="chosenunits">
+    <button id="randomize" onclick=randomize() disabled >Randomize</button>
+    <div class="chosen">
         <div id="unit1" class="unitslot">
             <img id="unit1img" width="100" height="100">
             <label class="unitnum" for="unit1img">Slot 1</label>
@@ -36,11 +67,11 @@
             <label class="unitnum" for="unit5img">Slot 5</label>
             <label for="unit5img">...</label>
         </div>
-    </div>
-    <div id="chosenaccessory">
-        <img id="accessoryimg" width="120" height="120">
-        <label class="unitnum" for="accessoryimg">Accessory</label>
-        <label for="accessoryimg">...</label>
+        <div id="chosenaccessory">
+            <img id="accessoryimg" width="120" height="120">
+            <label class="unitnum" for="accessoryimg">Accessory</label>
+            <label for="accessoryimg">...</label>
+        </div>
     </div>
 </body>
 <script src="rd.js"></script>
