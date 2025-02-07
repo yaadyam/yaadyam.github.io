@@ -26,13 +26,9 @@ async function getData() {
     let unitdl = document.getElementById("unitdatalist")
     Object.keys(gd["units"]).forEach(unit => {
         let opt = document.createElement("option")
-        let opttn = document.createTextNode(unit)
-        opt.appendChild(opttn)
-        opt.innerText = toTitleCase(unit)
         opt.value = unit
         unitdl.insertBefore(opt, undefined)
     })
-
     
     var coll = document.getElementsByClassName("collapsible");
     for (var i = 0; i < coll.length; i++) {
