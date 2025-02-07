@@ -47,7 +47,7 @@ function randomize() {
             let chosenunit = Object.keys(units)[chosenindices[i - 1]]
             let pageslot = document.getElementById("unit" + i)
             pageslot.querySelector("img").removeAttribute("hidden")
-            pageslot.querySelector("img").src = "./images/placeholder.jpg"
+            pageslot.querySelector("img").src = "./images/units/" + chosenunit + ".jpg"
             pageslot.lastElementChild.innerText = toTitleCase(chosenunit)
         }
     }
