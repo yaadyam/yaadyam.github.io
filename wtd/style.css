@@ -25,6 +25,8 @@ button {
     font-size: 125%;
     display: block;
     margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 hr {
@@ -89,7 +91,54 @@ img {
     padding: 10px;
 }
 
+#userexcludelist {
+    padding: 5px;
+    margin: auto;
+}
+
+.controls {
+    border-style: solid;
+    padding: 5px;
+    border-color: rgba(0, 0, 0, 0.287);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .unitslot {
     border-style: none;
     display: inline-block;
+}
+
+nav ul {
+    height: 150px;
+    min-height: 150px;
+    width: 200px;
+    overflow: scroll;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.collapsible {
+    color: #444;
+    padding: 6px;
+    text-align: center;
+    font-size: 15px;
+    border: solid;
+}
+
+.content {
+    padding: 18px;
+    padding-top: 6px;
+    display: none;
+    overflow: hidden;
+    border: solid;
+    border-color: rgba(0, 0, 0, 0.283);
+}
+
+.content > button {
+    display: inline;
+}
+
+input[type="text"] {
+    display: block;
+    margin: auto;
 }

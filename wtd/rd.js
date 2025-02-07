@@ -14,13 +14,39 @@ let filter = {
     "alt": true
 }
 
+let exclude = {}
+
 async function getData() {
     const url = "./data.json"
     const response = await fetch(url)
     const json = await response.json()
     gd = json
-    document.getElementById("gameversion").innerText =
-        "for WTD " + gd.game_version
+    document.getElementById("gameversion").innerText = "for WTD " + gd.game_version
+    
+    let unitdl = document.getElementById("unitdatalist")
+    Object.keys(gd["units"]).forEach(unit => {
+        let opt = document.createElement("option")
+        let opttn = document.createTextNode(unit)
+        opt.appendChild(opttn)
+        opt.innerText = toTitleCase(unit)
+        opt.value = unit
+        unitdl.insertBefore(opt, undefined)
+    })
+
+    
+    var coll = document.getElementsByClassName("collapsible");
+    for (var i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+    
     document.getElementById("randomize").removeAttribute("disabled") // prevent user from somehow hitting randomize before json object is loaded
     randomize()
 }
@@ -46,7 +72,7 @@ function randomize() {
     let unitpool = []
     Object.entries(units).forEach(unit => {
         let cat = unit[1]["category"];
-        if (filter[cat] == true) {
+        if (filter[cat] == true && exclude[unit[0]] == undefined) {
             unitpool.push(unit)
         }
     })
@@ -92,4 +118,24 @@ function updatefilters() {
     filter["pvp"] = document.getElementById("includepvp").checked
     filter["alt"] = document.getElementById("includealt").checked
     filter["summoners"] = document.getElementById("includesummon").checked
+}
+
+function userexclude() {
+    let unitname = document.getElementById("excludeunitinput").value
+    if (gd["units"][unitname] != undefined && exclude[unitname] == undefined) {
+        exclude[unitname] = true
+        let unitexc = document.getElementById("userexcludelist")
+        let opt = document.createElement("p")
+        let opttn = document.createTextNode(unitname)
+        opt.appendChild(opttn)
+        opt.innerText = toTitleCase(unitname)
+        unitexc.insertBefore(opt, undefined)
+    } else {
+        console.log("Cannot find unit " + unitname + " or unit already excluded" );
+    }
+}
+
+function clearuserexclude() {
+    exclude = {}
+    document.getElementById("userexcludelist").innerHTML = ''
 }

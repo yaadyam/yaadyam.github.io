@@ -8,7 +8,7 @@
     <label id="gameversion"></label>
     <hr>
     <div class="window">
-        <p>Unit categories:</p>
+        <p>Exclude categories:</p>
         <div id="cbs">
             <div class="cbc">
                 <label class="includecb" for="includecredz">Credz</label>
@@ -35,7 +35,21 @@
                 <input type="checkbox" id="includealt" value="alt" checked>
             </div>
         </div>
-        <div style="border-style:solid; padding: 3px; border-color:rgba(0, 0, 0, 0.287); margin-top: 5px; margin-bottom: 5px;">
+        <button type="button" class="collapsible">Exclude individual units...</button>
+        <div class="content">
+            <input type="text" id="excludeunitinput" list="unitdatalist" placeholder="enter unit name" />
+            <datalist id="unitdatalist">
+
+            </datalist>
+            <button onclick=userexclude()>Exclude Unit</button>
+            <button onclick=clearuserexclude()>Clear</button>
+            <nav>
+                <ul id="userexcludelist">
+                    
+                </ul>
+            </nav>
+        </div>
+        <div class="controls">
             <label class="includecb" for="includesummon">Include Summoners</label> 
             <input type="checkbox" id="includesummon" value="summon" checked>
         </div>
