@@ -62,6 +62,8 @@ function randomize() {
     let chosenacc = accpool[Math.floor(Math.random() * accpool.length)]
     const isSummoner = chosenacc[1]["summoner"]
     let accpageslot = document.getElementById("chosenaccessory")
+    let clpsedname = chosenacc[0].replaceAll("_", "").replaceAll("'", "").replaceAll("-", "")
+    accpageslot.querySelector("img").src = "./images/accs/" + clpsedname + ".png"
     accpageslot.lastElementChild.innerText = toTitleCase(chosenacc[0])
 
     const units = gd["units"]
