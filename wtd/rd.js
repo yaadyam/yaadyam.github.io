@@ -62,7 +62,7 @@ function randomize() {
     let chosenacc = accpool[Math.floor(Math.random() * accpool.length)]
     const isSummoner = chosenacc[1]["summoner"]
     let accpageslot = document.getElementById("chosenaccessory")
-    let clpsedname = chosenacc[0].replaceAll("_", "").replaceAll("'", "").replaceAll("-", "")
+    let clpsedname = chosenacc[0].replaceAll(new RegExp("_|-|'", "g"), "")
     accpageslot.querySelector("img").src = "./images/accs/" + clpsedname + ".png"
     accpageslot.lastElementChild.innerText = toTitleCase(chosenacc[0])
 
@@ -86,18 +86,16 @@ function randomize() {
             for (let i = 0; i < 5; i++) {
                 let chosenunit = unitpool[chosenindices[i]]
                 let pageslot = document.getElementById("unit" + (i+1))
-                pageslot.querySelector("img").style.display = "inline"
                 pageslot.querySelector("img").src = "./images/units/" + chosenunit[0] + ".png"
                 pageslot.lastElementChild.innerText = toTitleCase(chosenunit[0])
             }
-        
     } else {
         if (!isSummoner) {
             window.alert("You have less than 5 units included, change your filters!")
         } else {
             for (let i = 1; i <= 5; i++) {
                 let pageslot = document.getElementById("unit" + i)
-                pageslot.querySelector("img").style.display = "none"
+                pageslot.querySelector("img").src = "./images/accs/none.png"
                 pageslot.lastElementChild.innerText = "[none]"
             }
         }

@@ -19,6 +19,8 @@ body {
 
 img {
     display: block;
+    margin: auto;
+    padding: 10px;
 }
 
 button {
@@ -82,7 +84,8 @@ input[type="checkbox"] {
 }
 
 .unitnum {
-    font-weight: bold;
+    font-weight: normal;
+    font-style: italic;
 }
 
 img {
