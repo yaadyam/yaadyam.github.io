@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "Pollie";
+    src: url("../pollie-font/Pollie-woWmZ.ttf");
+}
+
+html {
+    height: 100%;
+    font-family: "Pollie";
+}
+
+body {
+    background: radial-gradient(blue, red);
+    background-attachment: fixed;
+}
+
+div {
+    min-width: 25em;
+    width: 80%;
+    margin: 10px auto 5px auto;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+    background-color: rgb(200,200,200);
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin: auto;
+}
+
+thead {
+    background-color: white;
+}
+
+tbody > tr {
+    border: 1px solid rgb(30, 30, 30);
+}
+
+tbody > tr > * {
+    margin: auto;
+    padding: 2px;
+}
