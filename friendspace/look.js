@@ -9,6 +9,8 @@ function getinputuser() {
     })
 }
 
+getinputuser()
+
 function listfriends(responseText) {
     let friends = JSON.parse(responseText)
     let table = document.getElementById("friendstable")
