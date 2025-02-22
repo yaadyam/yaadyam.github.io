@@ -14,11 +14,8 @@ body {
 }
 
 div {
-    min-width: 25em;
-    width: 80%;
     margin: 10px auto 5px auto;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.2);
 }
 
 table {
@@ -43,4 +40,13 @@ tbody > tr > * {
     text-align: center;
     margin: auto;
     padding: 0.5em;
+}
+
+#titlebar {
+    padding: 10px;
+    background-image: linear-gradient(to left, rgba(255,255,255,0), rgba(200,200,200,0.8), rgba(255,255,255,0));
+} 
+
+h1 {
+    display: inline;
 }
