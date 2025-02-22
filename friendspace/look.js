@@ -5,8 +5,14 @@ function getinputuser() {
     // https://create.roblox.com/docs/cloud/legacy/friends/v1#/Friends/get_v1_users__userId__friends
     let friendsreq = new XMLHttpRequest()
     friendsreq.addEventListener("load", (e) => {
-        console.log(friendsreq.response)
-        listfriends(friendsreq.response)
+        let response = JSON.parse(friendsreq.response)
+        if (response.data === undefined) {
+            document.getElementById("friendstable").style.display = "none"
+            document.getElementById("inputusername").innerText = `Failed to fetch info for UID ${uid}`
+        } else {
+            document.getElementById("inputusername").innerText = ``
+            listfriends(friendsreq.response)
+        }
     })
     friendsreq.open("GET", `https://corsproxy.io/?url=https://friends.roblox.com/v1/users/${uid}/friends`)
     friendsreq.send()
