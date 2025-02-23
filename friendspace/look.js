@@ -1,24 +1,39 @@
-
-
-function getinputuser() {
+async function getinputuser() {
     let uid = document.getElementById("userid").value
-    console.log(uid)
+    if (!(/^\d+$/.test(uid))) {
+        alert("Numbers only")
+        return
+    }
 
-    // https://create.roblox.com/docs/cloud/legacy/friends/v1#/Friends/get_v1_users__userId__friends
-    let friendsreq = new XMLHttpRequest()
-    friendsreq.addEventListener("load", (e) => {
-        let response = JSON.parse(friendsreq.response)
-        if (response.data === undefined) {
-            document.getElementById("friendstable").style.display = "none"
-            document.getElementById("inputusername").innerText = `Failed to fetch info for UID ${uid}`
-        } else {
-            document.getElementById("inputusername").innerText = ``
-            listfriends(friendsreq.response)
-        }
+    const rsp = await getuserfriends(uid).catch((err) => {
+        document.getElementById("friendstable").style.display = "none"
+        alert(err)
+        return
     })
-    friendsreq.open("GET", `https://corsproxy.io/?url=https://friends.roblox.com/v1/users/${uid}/friends`)
-    friendsreq.send()
+        
+    listfriends(rsp)
+}
 
+function getuserfriends(userID) {
+    // https://create.roblox.com/docs/cloud/legacy/friends/v1#/Friends/get_v1_users__userId__friends
+    return new Promise((resolve, reject) => {
+        let friendsreq = new XMLHttpRequest()
+        friendsreq.addEventListener("load", (e) => {
+            if (friendsreq.status >= 200 && friendsreq.status < 300) {
+                let response = JSON.parse(friendsreq.response)
+                if (response.data === undefined) { 
+                    reject(`Failed to fetch info for UID ${userID}`)
+                } else {
+                    document.getElementById("inputusername").innerText = ''
+                    resolve(friendsreq.response)
+                }
+            } else {
+                console.error(`HTTP request for friends of UID ${userID} failed with code`, friendsreq.status, friendsreq.statusText);
+            }
+        })
+        friendsreq.open("GET", `https://corsproxy.io/?url=https://friends.roblox.com/v1/users/${userID}/friends`)
+        friendsreq.send()
+    })
 }
 
 function listfriends(response) {
