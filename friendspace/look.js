@@ -1,3 +1,5 @@
+
+
 function getinputuser() {
     let uid = document.getElementById("userid").value
     console.log(uid)
@@ -17,17 +19,7 @@ function getinputuser() {
     friendsreq.open("GET", `https://corsproxy.io/?url=https://friends.roblox.com/v1/users/${uid}/friends`)
     friendsreq.send()
 
-    /* // https://create.roblox.com/docs/cloud/legacy/users/v1#/Users/get_v1_users__userId_
-    httpGetAsync(`https://corsproxy.io/?url=https://users.roblox.com/v1/users/${uid}`, (responseText) => {
-        console.log(responseText)
-        let userinfo = JSON.parse(responseText)
-        document.getElementById("inputusername").innerText = `${userinfo.name}'s friends:`
-        
-    }) */
-
 }
-
-getinputuser()
 
 function listfriends(response) {
     let friends = JSON.parse(response)
