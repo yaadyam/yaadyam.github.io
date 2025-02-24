@@ -55,18 +55,32 @@ function listfriends(response) {
         
         table.querySelector("tbody").appendChild(row)
     });
+    document.getElementById("numfriends").innerText = `Friends (${response.data.length})`
     table.style.display = "table"
 }
 
 /* List stats contained within user JSON object */
 function liststats(response) {
-    let statsdiv = document.getElementById("stats")
+    
     document.getElementById("statsusername").innerText = response.name
+    
     document.getElementById("statsdisplayname").innerText = response.displayName
+    
     let dateCreated = parseISOLocal(response.created)
     document.getElementById("statsdatecreated").innerText = dateCreated.toLocaleString(undefined)
+    
     let accountAge = Date.now() - dateCreated
     document.getElementById("statsaccountage").innerText = (accountAge / (1000*60*60*24)).toLocaleString(undefined, { "maximumFractionDigits": 2 }) + " days"
+
+    let status = document.getElementById("statsaccountstatus")
+    if (response.isBanned) {
+        status.innerText = "Banned"
+        status.style.color = "rgb(200, 20, 20)"
+    } else {
+        status.innerText = "Active"
+        status.style.color = "rgb(20, 120, 20)"
+    }
+
     console.log(response)
 }
 

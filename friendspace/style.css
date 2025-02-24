@@ -48,10 +48,11 @@ div:not(.flexitem):not(.statistic) {
 
 .statistic {
     width: fit-content;
-    margin: 0 0 10px 0;
+    margin: 10px 0 10px 0;
 }
 
 table {
+    min-width: 10em;
     border-collapse: collapse;
     border: 2px solid rgb(140 140 140);
     font-family: monospace;
@@ -94,7 +95,7 @@ caption {
 }
 
 #stats {
-    padding: 10px;
+    padding: 0 10px 0 10px;
     border: 2px solid rgb(140 140 140);
     background-color: rgba(220,220,220, 0.8);
 }
