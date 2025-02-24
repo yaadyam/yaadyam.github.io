@@ -24,6 +24,7 @@ div:not(.flexitem):not(.statistic) {
 .flexcontainer {
     display: flex;
     flex-flow: row wrap-reverse;
+    align-items: flex-end;
     justify-content: center;
     gap: 10px;
 }
