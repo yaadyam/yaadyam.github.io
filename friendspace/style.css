@@ -13,19 +13,48 @@ body {
     background: linear-gradient(to top, red, blue, red);
     background-attachment: scroll;
     padding: 10px;
+    text-align: center;
 }
 
-div {
+div:not(.flexitem):not(.statistic) {
     margin: 10px auto 5px auto;
-    text-align: center;
+    vertical-align: middle;
+}
+
+.flexcontainer {
+    display: flex;
+    flex-flow: row wrap-reverse;
+    justify-content: center;
+    gap: 10px;
+}
+
+.flexitem {
+    flex: 0 0 auto;
+}
+
+.statsvalue {
+    margin: 0;
+    float: right;
+    font: bold 125% monospace;
+}
+
+.statslabel {
+    margin: 0 5px 0 0;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.statistic {
+    width: fit-content;
+    margin: 0 0 10px 0;
 }
 
 table {
     border-collapse: collapse;
     border: 2px solid rgb(140 140 140);
-    background-color: rgb(220,220,220);
     font-family: monospace;
-    letter-spacing: 1px;
+    background-color: rgba(220,220,220, 0.8);
     margin: auto;
 }
 
@@ -40,6 +69,7 @@ tbody > tr {
 tbody > tr > * {
     display: table-cell;
     text-align: center;
+    font-family: monospace;
     margin: auto;
     padding: 0.5em;
 }
@@ -54,6 +84,18 @@ h2 {
 
 button, input {
     font-size: 120%;
+}
+
+caption {
+    background-color: white;
+    border: inherit;
+    font: bold 125% "Pollie";
+}
+
+#stats {
+    padding: 10px;
+    border: 2px solid rgb(140 140 140);
+    background-color: rgba(220,220,220, 0.8);
 }
 
 #titlebar {
